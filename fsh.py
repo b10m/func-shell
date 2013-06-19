@@ -49,7 +49,7 @@ class FuncShell(object):
         self.grammar = FuncShellGrammar()
 
     def run_shell(self):
-        do_readline = sys.stdin.isatty() and ('-', sys.stdin) in self.files
+        do_readline = sys.stdin.isatty() and ('-' and sys.stdin) in self.files[0]
         if do_readline and os.path.exists(os.path.expanduser('~/.fsh_history')):
             readline.read_history_file(os.path.expanduser('~/.fsh_history'))
             for file in ('/etc/inputrc', os.path.expanduser('~/.inputrc')):
